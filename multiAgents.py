@@ -10,6 +10,16 @@
 # (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
 # Student side autograding was added by Brad Miller, Nick Hay, and
 # Pieter Abbeel (pabbeel@cs.berkeley.edu).
+
+
+# STUDENT NAMES:
+"""
+Student Names and Matriculation number:
+    > Chinedu Ethelbert Obinna(3280240)
+    > Daniel Pusicha(3253050)
+"""
+
+
 from math import inf
 
 from util import manhattanDistance
@@ -74,11 +84,22 @@ class ReflexAgent(Agent):
         newScaredTimes = [ghostState.scaredTimer for ghostState in newGhostStates]
 
         "*** YOUR CODE HERE ***"
+        """
+        This evaluation function evaluates the state-action pairs. 
+        > If the ghost is scared, it chooses the action that yields the greatest score.
+        > otherwise: we check if a minimum distance to the closest ghost is kept:
+            >> If the minimum distance IS NOT KEPT: it chooses the action that yields the 
+                greatest distance to the closest ghost.
+            >> If the minimum distance IS KEPT: it chooses the action that seems to be most promising. 
+                The most promising action is determined by adjacent cookies and capsules. 
+                If no cookies and capsules are adjacent, it chooses the action that leads in the 
+                direction to cookies and capsules.     
+                
+        NB: In-line comments are also used for more clarity   
+        """
         # a,b,c are factors for weighing the score
-        a =1
-        b= 0.5
-        c= 1
-        # minDist: minimum manhatten distance to the closest ghost
+        a, b, c = 1, 0.5, 1
+        # minDist: minimum manhattan distance to the closest ghost
         minDist = 4
         # Some other useful information
         GhostStates = currentGameState.getGhostStates()
